@@ -4,495 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Noah L. Myers - Portfolio</title>
-  <meta name="description" content="Noah L. Myers - Cybersecurity student and AI Red Team Operative portfolio showcasing experience, skills, and education.">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Noah L. Myers - Cybersecurity student and AI specialist portfolio showcasing experience, skills, and education." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     :root {
-      --primary-color: #00ff88;
-      --secondary-color: #ff0066;
+      --primary-color: #00d4ff;
       --bg-color: #0a0a0a;
-      --surface-color: #1a1a1a;
-      --text-color: #ffffff;
-      --text-muted: #888888;
-      --border-color: #333333;
-      --gradient-primary: linear-gradient(135deg, #00ff88, #00ccaa);
-      --gradient-secondary: linear-gradient(135deg, #ff0066, #cc0099);
-      --gradient-bg: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      --text-primary: #ffffff;
+      --text-secondary: #94a3b8;
+      --bg-card: #151515;
+      --shadow: 0 4px 6px rgba(0,0,0,0.4);
+      --gradient-bg: linear-gradient(135deg, #0a0a0a, #111111);
     }
-
-    body {
-      font-family: 'Arial', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Header */
-    header {
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      color: var(--text-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
-      position: relative;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary-color);
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background: var(--gradient-primary);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: var(--gradient-bg);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-      opacity: 0.3;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .profile-section {
-      margin-bottom: 2rem;
-    }
-
-    .profile-photo-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 2rem;
-      border-radius: 50%;
-      background: var(--gradient-primary);
-      padding: 4px;
-    }
-
-    #dropZone {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: var(--surface-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px dashed var(--border-color);
-      position: relative;
-      overflow: hidden;
-    }
-
-    #dropZone:hover, #dropZone.dragover {
-      border-color: var(--primary-color);
-      background: rgba(0, 255, 136, 0.1);
-    }
-
-    #profile-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      display: none;
-    }
-
-    #photo-placeholder {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    #photo-upload {
-      display: none;
-    }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero .subtitle {
-      font-size: 1.5rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: var(--gradient-primary);
-      color: var(--bg-color);
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: bold;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
-    }
-
-    /* Main Content */
-    main {
-      padding: 4rem 0;
-    }
-
-    section {
-      margin-bottom: 6rem;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 3rem;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Tabs */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      padding: 0.75rem 1.5rem;
-      background: var(--surface-color);
-      color: var(--text-color);
-      border: 1px solid var(--border-color);
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-    }
-
-    .tab-btn:hover {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
-    }
-
-    .tab-btn.active {
-      background: var(--gradient-primary);
-      color: var(--bg-color);
-      border-color: transparent;
-    }
-
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    /* Cards */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 15px;
-      padding: 2rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-primary);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .card h3 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .card p {
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* Stats */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin: 4rem 0;
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 2rem;
-      background: var(--surface-color);
-      border-radius: 15px;
-      border: 1px solid var(--border-color);
-      transition: transform 0.3s ease;
-    }
-
-    .stat-item:hover {
-      transform: scale(1.05);
-    }
-
-    .stat-number {
-      font-size: 3rem;
-      font-weight: bold;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: block;
-    }
-
-    .stat-label {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .skill-item {
-      background: var(--surface-color);
-      padding: 1.5rem;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .skill-item:hover {
-      transform: translateY(-3px);
-      border-color: var(--primary-color);
-    }
-
-    .skill-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--primary-color);
-    }
-
-    /* Contact */
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--text-color);
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 1rem;
-      background: var(--surface-color);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      color: var(--text-color);
-      font-size: 1rem;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.2);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--surface-color);
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid var(--border-color);
-      color: var(--text-muted);
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    .loading {
-      opacity: 0;
-      animation: fadeIn 0.8s ease forwards;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        gap: 1rem;
-      }
-
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero .subtitle {
-        font-size: 1.2rem;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .tabs {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Inter',sans-serif;background:var(--bg-color);color:var(--text-primary);line-height:1.6;}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+    a{text-decoration:none;color:inherit;}
+    header{position:fixed;top:0;width:100%;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #222;z-index:1000;}
+    nav{display:flex;justify-content:space-between;align-items:center;height:70px;}
+    .logo{font-size:1.5rem;font-weight:600;}
+    .nav-toggle{display:none;font-size:1.5rem;background:none;border:none;color:inherit;cursor:pointer;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links.active{display:block;position:absolute;top:70px;left:0;background:var(--bg-color);width:100%;padding:1rem;}
+    .nav-links a{font-weight:500;position:relative;padding:0.25rem 0;}
+    .nav-links a::after{content:'';position:absolute;left:50%;bottom:0;width:0;height:2px;background:var(--primary-color);transition:width 0.3s,transform 0.3s;transform:translateX(-50%);} 
+    .nav-links a:hover::after{width:100%;}
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--gradient-bg);text-align:center;padding:100px 0 60px;}
+    .profile-photo-container{width:180px;height:180px;border-radius:50%;overflow:hidden;border:3px solid var(--primary-color);margin:0 auto 1.5rem;box-shadow:var(--shadow);background:var(--bg-card);}
+    .profile-photo{width:100%;height:100%;object-fit:cover;background:linear-gradient(45deg, #333, #555);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);font-size:3rem;}
+    h1{font-size:3rem;margin-bottom:0.5rem;}
+    .subtitle{color:var(--primary-color);font-size:1.25rem;margin-bottom:1rem;}
+    .bio{color:var(--text-secondary);max-width:600px;margin:0 auto 2rem;}
+    .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    .cta-button{background:var(--primary-color);color:var(--bg-color);padding:0.75rem 1.5rem;border-radius:8px;font-weight:600;transition:opacity 0.3s;}
+    .cta-button.secondary{background:transparent;border:2px solid var(--text-secondary);color:var(--text-secondary);}
+    .cta-button:hover{opacity:0.8;}
+    .section-title{font-size:2.5rem;text-align:center;margin:2rem 0;}
+    .section-subtitle{font-size:1.125rem;text-align:center;color:var(--text-secondary);margin-bottom:2rem;}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;}
+    .stat-item{text-align:center;background:var(--bg-card);padding:1.5rem;border-radius:12px;box-shadow:var(--shadow);}
+    .stat-number{font-size:2rem;color:var(--primary-color);display:block;margin-bottom:0.5rem;}
+    .experience-grid,.education-grid{display:grid;gap:1.5rem;}
+    .experience-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+    .education-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+    .education-card{background:var(--bg-card);padding:1.5rem;border-radius:12px;box-shadow:var(--shadow);}
+    .experience-card{background:var(--bg-card);padding:1.5rem;border-radius:12px;box-shadow:var(--shadow);border-left:4px solid var(--primary-color);}
+    .experience-card h3{color:var(--primary-color);margin-bottom:0.5rem;}
+    .experience-card .company{color:var(--text-secondary);margin-bottom:1rem;font-size:0.9rem;}
+    .experience-card .description{color:var(--text-primary);line-height:1.5;}
+    .contact-section{background:#111;padding:2rem 0;}
+    .contact-form{display:grid;gap:1rem;max-width:500px;margin:0 auto;}
+    .contact-form input,.contact-form textarea{padding:0.75rem;border-radius:6px;border:1px solid #333;background:#222;color:var(--text-primary);}
+    .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--primary-color);}
+    footer{text-align:center;padding:1.5rem 0;color:var(--text-secondary);}
+    section{padding:4rem 0;}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+    .animate-in{animation:fadeInUp 0.8s ease-out;}
+    @media(max-width:768px){
+      .nav-toggle{display:block;}
+      .nav-links{display:none;flex-direction:column;}
+      .nav-links.active{display:flex;}
+      .hero h1{font-size:2.5rem;}
+      .stats{grid-template-columns:repeat(2,1fr);}
     }
   </style>
 </head>
 <body>
-  <header class="loading">
+  <header>
     <nav class="container">
       <div class="logo">Noah L. Myers</div>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -503,300 +85,137 @@
     </nav>
   </header>
 
-  <section id="home" class="hero">
-    <div class="hero-content loading">
-      <div class="profile-section">
-        <div class="profile-photo-container">
-          <div id="dropZone">
-            <input type="file" id="photo-upload" accept="image/*" />
-            <img id="profile-photo" alt="Profile photo of Noah L. Myers" />
-            <div id="photo-placeholder">
-              <div>📷</div>
-              <div>Click or drag to upload photo</div>
-            </div>
-          </div>
-        </div>
+  <section id="home" class="hero animate-in">
+    <div class="hero-content">
+      <div class="profile-photo-container">
+        <div class="profile-photo">NM</div>
       </div>
       <h1>Noah L. Myers</h1>
-      <p class="subtitle">Cybersecurity Student & AI Red Team Operative</p>
-      <a href="#about" class="cta-button">Explore My Work</a>
+      <div class="subtitle">Cybersecurity Student & AI Specialist</div>
+      <div class="bio">
+        I am currently pursuing a Bachelor's degree in cybersecurity while gaining industry exposure through AI and cybersecurity roles. I am passionate about security systems, AI safety, and emerging technologies.
+      </div>
+      <div class="cta-buttons">
+        <a href="#contact" class="cta-button">Get In Touch</a>
+        <a href="https://www.linkedin.com/in/noah-myers-6354322bb/" class="cta-button secondary" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://tryhackme.com/p/Nmyers21" class="cta-button secondary" target="_blank" rel="noopener">TryHackMe</a>
+      </div>
     </div>
   </section>
 
   <main class="container">
-    <section id="about" class="loading">
+    <section id="about" class="animate-in">
       <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        Dedicated cybersecurity professional with hands-on experience in AI safety, red teaming, and quality assurance.
+      </p>
       <div class="stats">
-        <div class="stat-item">
-          <span class="stat-number">4+</span>
-          <span class="stat-label">Years Experience</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">50+</span>
-          <span class="stat-label">Projects Completed</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">12</span>
-          <span class="stat-label">Certifications</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number">98%</span>
-          <span class="stat-label">Success Rate</span>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Cybersecurity Specialist</h3>
-        <p>Passionate cybersecurity professional with expertise in AI red teaming, penetration testing, and threat analysis. Currently pursuing advanced education while gaining hands-on experience in enterprise security environments.</p>
+        <div class="stat-item"><span class="stat-number">Top 8%</span><span class="stat-label">TryHackMe Ranking</span></div>
+        <div class="stat-item"><span class="stat-number">2+</span><span class="stat-label">Years of Experience</span></div>
+        <div class="stat-item"><span class="stat-number">2</span><span class="stat-label">AI Roles</span></div>
+        <div class="stat-item"><span class="stat-number">2+</span><span class="stat-label">Certifications</span></div>
       </div>
     </section>
 
-    <section id="experience" class="loading">
-      <h2 class="section-title">Experience & Skills</h2>
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="experience-tab">Experience</button>
-        <button class="tab-btn" data-tab="skills-tab">Skills</button>
-        <button class="tab-btn" data-tab="projects-tab">Projects</button>
-      </div>
-
-      <div id="experience-tab" class="tab-content active">
-        <div class="card-grid">
-          <div class="card">
-            <h3>AI Red Team Operative</h3>
-            <p><strong>CyberDefense Corp</strong> | 2023 - Present</p>
-            <p>Leading AI-powered security testing initiatives, developing adversarial AI models, and conducting comprehensive security assessments for enterprise clients.</p>
-          </div>
-          <div class="card">
-            <h3>Cybersecurity Analyst</h3>
-            <p><strong>SecureTech Solutions</strong> | 2022 - 2023</p>
-            <p>Performed vulnerability assessments, incident response, and security monitoring for multiple client environments. Specialized in threat hunting and malware analysis.</p>
-          </div>
-          <div class="card">
-            <h3>Security Intern</h3>
-            <p><strong>DataGuard Inc.</strong> | 2021 - 2022</p>
-            <p>Assisted with penetration testing, security audits, and compliance assessments. Gained experience with various security tools and frameworks.</p>
-          </div>
+    <section id="experience" class="animate-in">
+      <h2 class="section-title">Experience</h2>
+      <div class="experience-grid">
+        <div class="experience-card">
+          <h3>AI Safety Specialist</h3>
+          <div class="company">Tech Company | 2024 - Present</div>
+          <div class="description">Conducting red team assessments and quality assurance for AI systems, focusing on safety protocols and vulnerability identification.</div>
         </div>
-      </div>
-
-      <div id="skills-tab" class="tab-content">
-        <div class="skills-grid">
-          <div class="skill-item">
-            <div class="skill-icon">🛡️</div>
-            <h4>Penetration Testing</h4>
-            <p>OWASP, Metasploit, Burp Suite</p>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon">🤖</div>
-            <h4>AI Security</h4>
-            <p>Adversarial ML, Model Testing</p>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon">🔍</div>
-            <h4>Threat Analysis</h4>
-            <p>SIEM, Log Analysis, IOCs</p>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon">💻</div>
-            <h4>Programming</h4>
-            <p>Python, Bash, PowerShell</p>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon">🌐</div>
-            <h4>Network Security</h4>
-            <p>Wireshark, Nmap, Firewall Config</p>
-          </div>
-          <div class="skill-item">
-            <div class="skill-icon">☁️</div>
-            <h4>Cloud Security</h4>
-            <p>AWS, Azure, GCP Security</p>
-          </div>
+        <div class="experience-card">
+          <h3>Cybersecurity Analyst</h3>
+          <div class="company">Security Firm | 2023 - 2024</div>
+          <div class="description">Performed security assessments, incident response, and implemented security measures for enterprise clients.</div>
         </div>
-      </div>
-
-      <div id="projects-tab" class="tab-content">
-        <div class="card-grid">
-          <div class="card">
-            <h3>AI Vulnerability Scanner</h3>
-            <p>Developed an AI-powered vulnerability scanner that uses machine learning to identify and classify security weaknesses in web applications.</p>
-          </div>
-          <div class="card">
-            <h3>Red Team Automation Framework</h3>
-            <p>Created a comprehensive automation framework for red team operations, including payload generation and lateral movement techniques.</p>
-          </div>
-          <div class="card">
-            <h3>Threat Intelligence Platform</h3>
-            <p>Built a real-time threat intelligence aggregation platform that collects and analyzes security data from multiple sources.</p>
-          </div>
+        <div class="experience-card">
+          <h3>IT Support Specialist</h3>
+          <div class="company">Previous Company | 2022 - 2023</div>
+          <div class="description">Provided technical support and maintained IT infrastructure while developing cybersecurity skills.</div>
         </div>
       </div>
     </section>
 
-    <section id="education" class="loading">
-      <h2 class="section-title">Education & Certifications</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Bachelor of Science in Cybersecurity</h3>
-          <p><strong>University of Technology</strong> | 2020 - 2024</p>
-          <p>Specialized in network security, cryptography, and digital forensics. Graduated Magna Cum Laude with a focus on AI security applications.</p>
+    <section id="education" class="animate-in">
+      <h2 class="section-title">Education</h2>
+      <div class="education-grid">
+        <div class="education-card">
+          <h3>B.Sc. Cybersecurity</h3>
+          <span>Western Governors University, 2022 - Present</span>
         </div>
-        <div class="card">
-          <h3>Professional Certifications</h3>
-          <ul style="list-style: none; padding: 0; margin-top: 1rem;">
-            <li style="margin-bottom: 0.5rem;">🏆 Certified Ethical Hacker (CEH)</li>
-            <li style="margin-bottom: 0.5rem;">🏆 CompTIA Security+</li>
-            <li style="margin-bottom: 0.5rem;">🏆 CISSP Associate</li>
-            <li style="margin-bottom: 0.5rem;">🏆 AWS Security Specialty</li>
-            <li style="margin-bottom: 0.5rem;">🏆 OSCP (In Progress)</li>
-          </ul>
+        <div class="education-card">
+          <h3>A.A. Computer Science</h3>
+          <span>Community College of XYZ, 2020 - 2022</span>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="loading">
-      <h2 class="section-title">Get In Touch</h2>
-      <form class="contact-form">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="cta-button">Send Message</button>
+    <section id="contact" class="contact-section animate-in">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">Feel free to reach out for collaborations or inquiries.</p>
+      <form class="contact-form" action="mailto:youremail@example.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="cta-button">Send</button>
       </form>
     </section>
   </main>
 
-  <footer class="loading">
-    <div class="container">
-      <p>&copy; <span id="current-year"></span> Noah L. Myers - All Rights Reserved</p>
-    </div>
+  <footer class="animate-in">
+    <div class="footer-content">&copy; 2025 Noah L. Myers. All rights reserved.</div>
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Set current year
-      document.getElementById('current-year').textContent = new Date().getFullYear();
+    // Mobile navigation toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
 
-      // Tabs
-      const tabButtons = document.querySelectorAll('.tab-btn');
-      const tabContents = document.querySelectorAll('.tab-content');
-
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          // Remove active classes
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          tabContents.forEach(content => content.classList.remove('active'));
-
-          // Activate new tab
-          button.classList.add('active');
-          const tabId = button.getAttribute('data-tab');
-          document.getElementById(tabId).classList.add('active');
-        });
-      });
-
-      // Animate loading
-      document.querySelectorAll('.loading').forEach((el, index) => {
-        el.style.animationDelay = `${index * 0.1}s`;
-      });
-
-      // Photo upload
-      const photoUpload = document.getElementById('photo-upload');
-      const photoPlaceholder = document.getElementById('photo-placeholder');
-      const profilePhoto = document.getElementById('profile-photo');
-      const dropZone = document.getElementById('dropZone');
-
-      photoUpload.addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (file && file.type.startsWith('image/')) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            profilePhoto.src = e.target.result;
-            profilePhoto.alt = "Uploaded profile photo of Noah L. Myers";
-            profilePhoto.style.display = 'block';
-            photoPlaceholder.style.display = 'none';
-          };
-          reader.readAsDataURL(file);
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Close mobile menu if open
+          navLinks.classList.remove('active');
         }
-      });
-
-      dropZone.addEventListener('click', () => {
-        photoUpload.click();
-      });
-
-      dropZone.addEventListener('dragover', function (e) {
-        e.preventDefault();
-        dropZone.classList.add('dragover');
-      });
-
-      dropZone.addEventListener('dragleave', function (e) {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
-      });
-
-      dropZone.addEventListener('drop', function (e) {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
-        const files = e.dataTransfer.files;
-        if (files.length > 0 && files[0].type.startsWith('image/')) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            profilePhoto.src = e.target.result;
-            profilePhoto.alt = "Uploaded profile photo of Noah L. Myers";
-            profilePhoto.style.display = 'block';
-            photoPlaceholder.style.display = 'none';
-          };
-          reader.readAsDataURL(files[0]);
-        }
-      });
-
-      // Stat animation on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('loading');
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('.stat-item').forEach(item => {
-        observer.observe(item);
-      });
-
-      // Smooth scroll for anchors
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Contact form submission
-      document.querySelector('.contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! This is a demo form.');
       });
     });
+
+    // Animate elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-in').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+      observer.observe(el);
+    });
   </script>
+</body>
+</html>
 </body>
 </html>
