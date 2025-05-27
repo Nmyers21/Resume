@@ -853,6 +853,9 @@
     </footer>
 
     <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
         // Tab functionality
         document.addEventListener('DOMContentLoaded', function() {
             const tabButtons = document.querySelectorAll('.tab-btn');
@@ -872,3 +875,95 @@
                     // Remove active class from all buttons and contents
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+
+        // Photo upload functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const photoUpload = document.getElementById('photo-upload');
+            const photoPlaceholder = document.getElementById('photo-placeholder');
+            const profilePhoto = document.getElementById('profile-photo');
+            const dropZone = document.getElementById('dropZone');
+
+            // File upload handler
+            photoUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        profilePhoto.src = e.target.result;
+                        profilePhoto.style.display = 'block';
+                        photoPlaceholder.style.display = 'none';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Drag and drop functionality
+            dropZone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+
+            dropZone.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+            });
+
+            dropZone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0 && files[0].type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        profilePhoto.src = e.target.result;
+                        profilePhoto.style.display = 'block';
+                        photoPlaceholder.style.display = 'none';
+                    };
+                    reader.readAsDataURL(files[0]);
+                }
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stats on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.classList.add('loading');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe stat items
+            document.querySelectorAll('.stat-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
